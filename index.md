@@ -3,7 +3,7 @@ layout: lesson
 root: .
 ---
 
-*This lesson has been adapted from the original [Data Carpentry - Wrangling Genomics](https://datacarpentry.org/wrangling-genomics/) to be run using the NeSI infrastructure as part of the Otago Bioinformatics Spring School instead of AWS.*
+**This lesson has been adapted from the original [Data Carpentry - Wrangling Genomics](https://datacarpentry.org/wrangling-genomics/) to be run using the NeSI infrastructure as part of the Otago Bioinformatics Spring School instead of AWS.**
 
 A lot of genomics analysis is done using command-line tools for three reasons:   
 1) you will often be working with a large number of files, and working through the command-line rather than 
@@ -31,7 +31,7 @@ use a variety of bioinformatic tools with confidence and greatly enhance your re
 > This lesson also assumes some familiarity with biological concepts, including the structure of DNA, nucleotide abbreviations, and the 
 > concept of genomic variation within a population. 
 >
-> This lesson uses data hosted on an Amazon Machine Instance (AMI). Workshop participants will be given information on how
-> to log-in to the AMI during the workshop. Learners using these materials for self-directed study will need to set up their own
-> AMI. Information on setting up an AMI and accessing the required data is provided on the [Genomics Workshop setup page](http://www.datacarpentry.org/genomics-workshop/setup.html).
+> This lesson uses data hosted on NeSI. Workshop participants will be given information on how
+> to log-in to NeSI during the workshop. Learners using these materials for self-directed study will need to set up their own
+> AMI. Information on setting up an AMI and accessing the required data is provided on the original [Genomics Workshop setup page](http://www.datacarpentry.org/genomics-workshop/setup.html).
 {: .prereq}
