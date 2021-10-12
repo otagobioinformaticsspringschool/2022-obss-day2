@@ -3,6 +3,8 @@ layout: lesson
 root: .
 ---
 
+*This lesson has been adapted from the original [Data Carpentry - Wrangling Genomics](https://datacarpentry.org/wrangling-genomics/) to be run using the NeSI infrastructure as part of the Otago Bioinformatics Spring School instead of AWS.*
+
 A lot of genomics analysis is done using command-line tools for three reasons:   
 1) you will often be working with a large number of files, and working through the command-line rather than 
 through a graphical user interface (GUI) allows you to automate repetitive tasks,    
