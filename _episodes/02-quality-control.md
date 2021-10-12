@@ -17,64 +17,58 @@ keypoints:
 
 When working with high-throughput sequencing data, the raw reads you get off of the sequencer will need to pass
 through a number of  different tools in order to generate your final desired output. The execution of this set of
-tools in a specified order is commonly referred to as a *workflow* or a *pipeline*. 
+tools in a specified order is commonly referred to as a *workflow* or a *pipeline*.
 
 An example of the workflow we will be using for our variant calling analysis is provided below with a brief
-description of each step. 
+description of each step.
 
 ![workflow](../img/variant_calling_workflow.png)
 
-
 1. Quality control - Assessing quality using FastQC
 2. Quality control - Trimming and/or filtering reads (if necessary)
-3. Align reads to reference genome 
+3. Align reads to reference genome
 4. Perform post-alignment clean-up
 5. Variant calling
 
 These workflows in bioinformatics adopt a plug-and-play approach in that the output of one tool can be easily
-used as input to another tool without any extensive configuration. Having standards for data formats is what 
-makes this feasible. Standards ensure that data is stored in a way that is generally accepted and agreed upon 
-within the community. The tools that are used to analyze data at different stages of the workflow are therefore 
+used as input to another tool without any extensive configuration. Having standards for data formats is what
+makes this feasible. Standards ensure that data is stored in a way that is generally accepted and agreed upon
+within the community. The tools that are used to analyze data at different stages of the workflow are therefore
 built under the assumption that the data will be provided in a specific format.  
 
 # Starting with Data
 
 Often times, the first step in a bioinformatic workflow is getting the data you want to work with onto a computer where you can work with it. If you have outsourced sequencing of your data, the sequencing center will usually provide you with a link that you can use to download your data. Today we will be working with publicly available sequencing data.
 
-We are studying a population of *Escherichia coli* (designated Ara-3), which were propagated for more than 50,000 generations in a glucose-limited minimal medium. We will be working with three samples from this experiment, one from 5,000 generations, one from 15,000 generations, and one from 50,000 generations. The population changed substantially during the course of the experiment, and we will be exploring how with our variant calling workflow. 
+We are studying a population of *Escherichia coli* (designated Ara-3), which were propagated for more than 50,000 generations in a glucose-limited minimal medium. We will be working with three samples from this experiment, one from 5,000 generations, one from 15,000 generations, and one from 50,000 generations. The population changed substantially during the course of the experiment, and we will be exploring how with our variant calling workflow.
 
-The data are paired-end, so we will download two files for each sample. We will use the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) to get our data. The ENA "provides a comprehensive record of the world's nucleotide sequencing information, covering raw sequencing data, sequence assembly information and functional annotation." The ENA also provides sequencing data in the fastq format, an important format for sequencing reads that we will be learning about today. 
+The data are paired-end, so we will download two files for each sample. We will use the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) to get our data. The ENA "provides a comprehensive record of the world's nucleotide sequencing information, covering raw sequencing data, sequence assembly information and functional annotation." The ENA also provides sequencing data in the fastq format, an important format for sequencing reads that we will be learning about today.
 
-To download the data, run the commands below. 
+To save time, the data has already been downloaded for you and placed in `~/obss2021/genomic_dna/data/untrimmed_fastq`.
 
-Here we are using the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories doesn't already exist. It also supresses errors if the directory already exists, without overwriting that directory. 
-
-It will take about 15 minutes to download the files.
 ~~~
-mkdir -p ~/dc_workshop/data/untrimmed_fastq/
-cd ~/dc_workshop/data/untrimmed_fastq
-
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_1.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_2.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_1.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz 
+cd ~/obss2021/genomic_dna/data/untrimmed_fastq
 ~~~
 {: .bash}
 
-> ## Faster option
+> ## Original way to obtain the data
+> To download the data, run the commands below.
+>
+> Here we are using the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories doesn't already exist. It also supresses errors if the directory already exists, without overwriting that directory.
 > 
-> If your workshop is short on time or the venue's internet connection is weak or unstable, learners can 
-> avoid needing to download the data and instead use the data files provided in the `.backup/` directory.
-> 
+> It will take about 15 minutes to download the files.
 > ~~~
-> $ cp ~/.backup/untrimmed_fastq/*fastq.gz .
+> mkdir -p ~/dc_workshop/data/untrimmed_fastq/
+> cd ~/dc_workshop/data/untrimmed_fastq
+>
+> curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
+> curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
+> curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_1.fastq.gz
+> curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_2.fastq.gz
+> curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_1.fastq.gz
+> curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz
 > ~~~
 > {: .bash}
-> 
-> This command creates a copy of each of the files in the `.backup/untrimmed_fastq/` directory that end in `fastq.gz` and
-> places the copies in the current working directory (signified by `.`). 
 {: .callout}
 
 
@@ -357,7 +351,7 @@ Here, we see positions within the read in which the boxes span a much wider rang
 We will now assess the quality of the reads that we downloaded. First, make sure you're still in the `untrimmed_fastq` directory
 
 ~~~
-$ cd ~/dc_workshop/data/untrimmed_fastq/ 
+$ cd ~/obss2021/genomic_dna/data/untrimmed_fastq/ 
 ~~~
 {: .bash}
 
@@ -456,9 +450,9 @@ will move these
 output files into a new directory within our `results/` directory.
 
 ~~~
-$ mkdir -p ~/dc_workshop/results/fastqc_untrimmed_reads 
-$ mv *.zip ~/dc_workshop/results/fastqc_untrimmed_reads/ 
-$ mv *.html ~/dc_workshop/results/fastqc_untrimmed_reads/ 
+$ mkdir -p ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads 
+$ mv *.zip ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
+$ mv *.html ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
 ~~~
 {: .bash}
 
@@ -466,7 +460,7 @@ Now we can navigate into this results directory and do some closer
 inspection of our output files.
 
 ~~~
-$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/ 
+$ cd ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
 ~~~
 {: .bash}
 
@@ -572,7 +566,7 @@ in your terminal program that is connected to your AWS instance
 our results subdirectory.   
 
 ~~~
-$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/ 
+$ cd ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
 $ ls 
 ~~~
 {: .bash}
@@ -741,10 +735,10 @@ us whether this sample passed, failed, or is borderline (`WARN`). Remember, to q
 We can make a record of the results we obtained for all our samples
 by concatenating all of our `summary.txt` files into a single file 
 using the `cat` command. We'll call this `fastqc_summaries.txt` and move
-it to `~/dc_workshop/docs`.
+it to `~/obss2021/genomic_dna/docs`.
 
 ~~~
-$ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt 
+$ cat */summary.txt > ~/obss2021/genomic_dna/docs/fastqc_summaries.txt 
 ~~~
 {: .bash}
 
@@ -758,7 +752,7 @@ $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 >> We can get the list of all failed tests using `grep`. 
 >> 
 >> ~~~ 
->> $ cd ~/dc_workshop/docs
+>> $ cd ~/obss2021/genomic_dna/docs
 >> $ grep FAIL fastqc_summaries.txt
 >> ~~~
 >> {: .bash}

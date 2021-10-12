@@ -59,18 +59,17 @@ This metadata describes information on the *Ara-3* clones and the columns repres
 | sequencing_depth | depth of sequencing |
 | cit              | citrate-using mutant status		|
 
-
 > ## Challenge
 > 
 > Based on the metadata, can you answer the following questions?
-> 
+>
 > 1. How many different generations exist in the data?
 > 2. How many rows and how many columns are in this data?
 > 3. How many citrate+ mutants have been recorded in **Ara-3**?
 > 4. How many hypermutable mutants have been recorded in **Ara-3**?
 >
 > > ## Solution
->> 
+>>
 > > 1. 25 different generations
 > > 2. 62 rows, 12 columns
 > > 3. 10 citrate+ mutants
@@ -79,4 +78,3 @@ This metadata describes information on the *Ara-3* clones and the columns repres
 {: .challenge}
 
 <!-- can add some additional info relevant to interplay of hypermutability and Cit+ adaptations, but keep it simple for now -->
-
