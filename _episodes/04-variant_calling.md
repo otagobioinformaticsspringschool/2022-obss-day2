@@ -36,7 +36,7 @@ The alignment process consists of two steps:
 First we download the reference genome for *E. coli* REL606. Although we could copy or move the file with `cp` or `mv`, most genomics workflows begin with a download step, so we will practice that here. 
 
 ~~~
-$ cd ~/dc_workshop
+$ cd ~/obss2021/genomic_dna
 $ mkdir -p data/ref_genome
 $ curl -L -o data/ref_genome/ecoli_rel606.fasta.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/017/985/GCA_000017985.1_ASM1798v1/GCA_000017985.1_ASM1798v1_genomic.fna.gz
 $ gunzip data/ref_genome/ecoli_rel606.fasta.gz
@@ -66,7 +66,7 @@ and will enable us to run our variant calling workflow quite quickly.
 ~~~
 $ curl -L -o sub.tar.gz https://ndownloader.figshare.com/files/14418248
 $ tar xvf sub.tar.gz
-$ mv sub/ ~/dc_workshop/data/trimmed_fastq_small
+$ mv sub/ ~/obss2021/genomic_dna/data/trimmed_fastq_small
 ~~~
 {: .bash}
 
@@ -464,7 +464,7 @@ this box, type the name of the "chromosome" followed by a colon and the position
 >> ## Solution
 >> 
 >> ~~~
->> $ samtools tview ~/dc_workshop/results/bam/SRR2584866.aligned.sorted.bam ~/dc_workshop/data/ref_genome/ecoli_rel606.fasta
+>> $ samtools tview ~/obss2021/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam ~/obss2021/genomic_dna/data/ref_genome/ecoli_rel606.fasta
 >> ~~~
 >> {: .bash}
 >> 
@@ -489,19 +489,21 @@ $ cd ~/Desktop/files_for_igv
 ~~~
 {: .bash}
 
-Now we will transfer our files to that new directory. Remember to replace the text between the `@` and the `:` 
-with your AWS instance number. The commands to `scp` always go in the terminal window that is connected to your
-local computer (not your AWS instance).
-
-~~~
-$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/dc_workshop/results/bam/SRR2584866.aligned.sorted.bam ~/Desktop/files_for_igv
-$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/dc_workshop/results/bam/SRR2584866.aligned.sorted.bam.bai ~/Desktop/files_for_igv
-$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/dc_workshop/data/ref_genome/ecoli_rel606.fasta ~/Desktop/files_for_igv
-$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/dc_workshop/results/vcf/SRR2584866_final_variants.vcf ~/Desktop/files_for_igv
-~~~
-{: .bash}
-
-You will need to type the password for your AWS instance each time you call `scp`. 
+> ## Instructions for AWS
+>Now we will transfer our files to that new directory. Remember to replace the text between the `@` and the `:` 
+>with your AWS instance number. The commands to `scp` always go in the terminal window that is connected to your
+>local computer (not your AWS instance).
+>
+>~~~
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss2021/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam ~/Desktop/files_for_igv
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss2021/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam.bai ~/Desktop/files_for_igv
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss2021/genomic_dna/data/ref_genome/ecoli_rel606.fasta ~/Desktop/files_for_igv
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss2021/genomic_dna/results/vcf/SRR2584866_final_variants.vcf ~/Desktop/files_for_igv
+>~~~
+>{: .bash}
+>
+>You will need to type the password for your AWS instance each time you call `scp`.
+{: .callout}
 
 Next, we need to open the IGV software. If you haven't done so already, you can download IGV from the [Broad Institute's software page](https://www.broadinstitute.org/software/igv/download), double-click the `.zip` file
 to unzip it, and then drag the program into your Applications folder. 

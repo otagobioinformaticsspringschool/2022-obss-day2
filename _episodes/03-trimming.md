@@ -119,7 +119,7 @@ In this example, we've told Trimmomatic:
 Now we will run Trimmomatic on our data. To begin, navigate to your `untrimmed_fastq` data directory:
 
 ~~~
-$ cd ~/dc_workshop/data/untrimmed_fastq
+$ cd ~/obss2021/genomic_dna/data/untrimmed_fastq
 ~~~
 {: .bash}
 
@@ -284,7 +284,7 @@ control process! Before we move on, let's move our trimmed FASTQ files
 to a new subdirectory within our `data/` directory.
 
 ~~~
-$ cd ~/dc_workshop/data/untrimmed_fastq
+$ cd ~/obss2021/genomic_dna/data/untrimmed_fastq
 $ mkdir ../trimmed_fastq
 $ mv *.trim* ../trimmed_fastq
 $ cd ../trimmed_fastq
@@ -308,7 +308,7 @@ SRR2584863_2un.trim.fastq.gz  SRR2584866_2un.trim.fastq.gz  SRR2589044_2un.trim.
 > to see whether your per base sequence quality is higher after
 > trimming.
 >
->> ## Solution
+>> ## Solution (for original lesson using AWS)
 >>
 >> In your AWS terminal window do:
 >>

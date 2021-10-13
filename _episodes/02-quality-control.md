@@ -466,64 +466,69 @@ $ cd ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/
 
 ## Viewing the FastQC results
 
-If we were working on our local computers, we'd be able to look at 
-each of these HTML files by opening them in a web browser.
-
-However, these files are currently sitting on our remote AWS 
-instance, where our local computer can't see them.
-And, since we are only logging into the AWS instance via the 
-command line - it doesn't have any web browser setup to display 
-these files either.
-
-So the easiest way to look at these webpage summary reports will be 
-to transfer them to our local computers (i.e. your laptop).
-
-To transfer a file from a remote server to our own machines, we will
-use `scp`, which we learned yesterday in the Shell Genomics lesson. 
-
-First we
-will make a new directory on our computer to store the HTML files
-we're transferring. Let's put it on our desktop for now. Open a new
-tab in your terminal program (you can use the pull down menu at the
-top of your screen or the Cmd+t keyboard shortcut) and type: 
-
-~~~
-$ mkdir -p ~/Desktop/fastqc_html 
-~~~
-{: .bash}
-
-Now we can transfer our HTML files to our local computer using `scp`.
-
-~~~
-$ scp dcuser@ec2-34-238-162-94.compute-1.amazonaws.com:~/dc_workshop/results/fastqc_untrimmed_reads/*.html ~/Desktop/fastqc_html
-~~~
-{: .bash}
-
-As a reminder, the first part
-of the command `dcuser@ec2-34-238-162-94.compute-1.amazonaws.com` is
-the address for your remote computer. Make sure you replace everything
-after `dcuser@` with your instance number (the one you used to log in). 
-
-The second part starts with a `:` and then gives the absolute path
-of the files you want to transfer from your remote computer. Don't
-forget the `:`. We used a wildcard (`*.html`) to indicate that we want all of
-the HTML files. 
-
-The third part of the command gives the absolute path of the location
-you want to put the files. This is on your local computer and is the 
-directory we just created `~/Desktop/fastqc_html`. 
-
-You should see a status output like this:
-
-~~~
-SRR2584863_1_fastqc.html                      100%  249KB 152.3KB/s   00:01    
-SRR2584863_2_fastqc.html                      100%  254KB 219.8KB/s   00:01    
-SRR2584866_1_fastqc.html                      100%  254KB 271.8KB/s   00:00    
-SRR2584866_2_fastqc.html                      100%  251KB 252.8KB/s   00:00    
-SRR2589044_1_fastqc.html                      100%  249KB 370.1KB/s   00:00    
-SRR2589044_2_fastqc.html                      100%  251KB 592.2KB/s   00:00  
-~~~
-{: .output}
+We can use the explorer as part of Jupyter hub to navigate to the directory 
+containing the `.html` files and click on each one to view the results of Fastqc.
+> ### Original instructions for AWS
+>If we were working on our local computers, we'd be able to look at 
+>each of these HTML files by opening them in a web browser.
+>
+>However, these files are currently sitting on our remote AWS 
+>instance, where our local computer can't see them.
+>And, since we are only logging into the AWS instance via the 
+>command line - it doesn't have any web browser setup to display 
+>these files either.
+>
+>So the easiest way to look at these webpage summary reports will be 
+>to transfer them to our local computers (i.e. your laptop).
+>
+>To transfer a file from a remote server to our own machines, we will
+>use `scp`, which we learned yesterday in the Shell Genomics lesson. 
+>
+>First we
+>will make a new directory on our computer to store the HTML files
+>we're transferring. Let's put it on our desktop for now. Open a new
+>tab in your terminal program (you can use the pull down menu at the
+>top of your screen or the Cmd+t keyboard shortcut) and type: 
+>
+>~~~
+>$ mkdir -p ~/Desktop/fastqc_html 
+>~~~
+>{: .bash}
+>
+>
+>Now we can transfer our HTML files to our local computer using `scp`.
+>
+>~~~
+>$ scp dcuser@ec2-34-238-162-94.compute-1.amazonaws.com:~/dc_workshop/results/fastqc_untrimmed_reads/*.html ~/Desktop/fastqc_html
+>~~~
+>{: .bash}
+>
+>As a reminder, the first part
+>of the command `dcuser@ec2-34-238-162-94.compute-1.amazonaws.com` is
+>the address for your remote computer. Make sure you replace everything
+>after `dcuser@` with your instance number (the one you used to log in). 
+>
+>The second part starts with a `:` and then gives the absolute path
+>of the files you want to transfer from your remote computer. Don't
+>forget the `:`. We used a wildcard (`*.html`) to indicate that we want all of
+>the HTML files.
+>
+>The third part of the command gives the absolute path of the location
+>you want to put the files. This is on your local computer and is the 
+>directory we just created `~/Desktop/fastqc_html`. 
+>
+>You should see a status output like this:
+>
+>~~~
+>SRR2584863_1_fastqc.html                      100%  249KB 152.3KB/s   00:01    
+>SRR2584863_2_fastqc.html                      100%  254KB 219.8KB/s   00:01    
+>SRR2584866_1_fastqc.html                      100%  254KB 271.8KB/s   00:00    
+>SRR2584866_2_fastqc.html                      100%  251KB 252.8KB/s   00:00    
+>SRR2589044_1_fastqc.html                      100%  249KB 370.1KB/s   00:00    
+>SRR2589044_2_fastqc.html                      100%  251KB 592.2KB/s   00:00  
+>~~~
+>{: .output}
+{: .callout}
 
 Now we can go to our new directory and open the 6 HTML files. 
 
