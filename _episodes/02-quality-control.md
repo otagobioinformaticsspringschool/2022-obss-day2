@@ -13,6 +13,8 @@ keypoints:
 - "`for` loops let you perform the same set of operations on multiple files with a single command."
 ---
 
+**This lesson has been adapted from the original [Data Carpentry - Wrangling Genomics](https://datacarpentry.org/wrangling-genomics/) to be run using the NeSI infrastructure as part of the Otago Bioinformatics Spring School instead of AWS.**
+
 # Bioinformatic workflows
 
 When working with high-throughput sequencing data, the raw reads you get off of the sequencer will need to pass
@@ -44,22 +46,22 @@ We are studying a population of *Escherichia coli* (designated Ara-3), which wer
 
 The data are paired-end, so we will download two files for each sample. We will use the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) to get our data. The ENA "provides a comprehensive record of the world's nucleotide sequencing information, covering raw sequencing data, sequence assembly information and functional annotation." The ENA also provides sequencing data in the fastq format, an important format for sequencing reads that we will be learning about today.
 
-To save time, the data has already been downloaded for you and placed in `~/obss2021/genomic_dna/data/untrimmed_fastq`.
+To save time, the data has already been downloaded for you and placed in `~/obss_2021/genomic_dna/data/untrimmed_fastq`.
 
 ~~~
-cd ~/obss2021/genomic_dna/data/untrimmed_fastq
+cd ~/obss_2021/genomic_dna/data/untrimmed_fastq
 ~~~
 {: .bash}
 
-> ## Original way to obtain the data
+> ## Original way to obtain the data (Use if not on NeSI)
 > To download the data, run the commands below.
 >
 > Here we are using the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories doesn't already exist. It also supresses errors if the directory already exists, without overwriting that directory.
 > 
 > It will take about 15 minutes to download the files.
 > ~~~
-> mkdir -p ~/dc_workshop/data/untrimmed_fastq/
-> cd ~/dc_workshop/data/untrimmed_fastq
+> mkdir -p ~/obss_2021/data/untrimmed_fastq/
+> cd ~/obss_2021/data/untrimmed_fastq
 >
 > curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
 > curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
@@ -351,7 +353,7 @@ Here, we see positions within the read in which the boxes span a much wider rang
 We will now assess the quality of the reads that we downloaded. First, make sure you're still in the `untrimmed_fastq` directory
 
 ~~~
-$ cd ~/obss2021/genomic_dna/data/untrimmed_fastq/ 
+$ cd ~/obss_2021/genomic_dna/data/untrimmed_fastq/ 
 ~~~
 {: .bash}
 
@@ -450,9 +452,9 @@ will move these
 output files into a new directory within our `results/` directory.
 
 ~~~
-$ mkdir -p ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads 
-$ mv *.zip ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
-$ mv *.html ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
+$ mkdir -p ~/obss_2021/genomic_dna/results/fastqc_untrimmed_reads 
+$ mv *.zip ~/obss_2021/genomic_dna/results/fastqc_untrimmed_reads/ 
+$ mv *.html ~/obss_2021/genomic_dna/results/fastqc_untrimmed_reads/ 
 ~~~
 {: .bash}
 
@@ -460,7 +462,7 @@ Now we can navigate into this results directory and do some closer
 inspection of our output files.
 
 ~~~
-$ cd ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
+$ cd ~/obss_2021/genomic_dna/results/fastqc_untrimmed_reads/ 
 ~~~
 {: .bash}
 
@@ -468,7 +470,8 @@ $ cd ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/
 
 We can use the explorer as part of Jupyter hub to navigate to the directory 
 containing the `.html` files and click on each one to view the results of Fastqc.
-> ### Original instructions for AWS
+> ## Original instructions for AWS
+>
 >If we were working on our local computers, we'd be able to look at 
 >each of these HTML files by opening them in a web browser.
 >
@@ -571,7 +574,7 @@ in your terminal program that is connected to your AWS instance
 our results subdirectory.   
 
 ~~~
-$ cd ~/obss2021/genomic_dna/results/fastqc_untrimmed_reads/ 
+$ cd ~/obss_2021/genomic_dna/results/fastqc_untrimmed_reads/ 
 $ ls 
 ~~~
 {: .bash}
@@ -740,10 +743,10 @@ us whether this sample passed, failed, or is borderline (`WARN`). Remember, to q
 We can make a record of the results we obtained for all our samples
 by concatenating all of our `summary.txt` files into a single file 
 using the `cat` command. We'll call this `fastqc_summaries.txt` and move
-it to `~/obss2021/genomic_dna/docs`.
+it to `~/obss_2021/genomic_dna/docs`.
 
 ~~~
-$ cat */summary.txt > ~/obss2021/genomic_dna/docs/fastqc_summaries.txt 
+$ cat */summary.txt > ~/obss_2021/genomic_dna/docs/fastqc_summaries.txt 
 ~~~
 {: .bash}
 
@@ -757,7 +760,7 @@ $ cat */summary.txt > ~/obss2021/genomic_dna/docs/fastqc_summaries.txt
 >> We can get the list of all failed tests using `grep`. 
 >> 
 >> ~~~ 
->> $ cd ~/obss2021/genomic_dna/docs
+>> $ cd ~/obss_2021/genomic_dna/docs
 >> $ grep FAIL fastqc_summaries.txt
 >> ~~~
 >> {: .bash}

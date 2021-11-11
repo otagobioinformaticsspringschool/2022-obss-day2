@@ -13,6 +13,8 @@ keypoints:
 - "Data cleaning is an essential step in a genomics workflow."
 ---
 
+**This lesson has been adapted from the original [Data Carpentry - Wrangling Genomics](https://datacarpentry.org/wrangling-genomics/) to be run using the NeSI infrastructure as part of the Otago Bioinformatics Spring School instead of AWS.**
+
 # Cleaning Reads
 
 In the previous episode, we took a high-level look at the quality
@@ -119,7 +121,7 @@ In this example, we've told Trimmomatic:
 Now we will run Trimmomatic on our data. To begin, navigate to your `untrimmed_fastq` data directory:
 
 ~~~
-$ cd ~/obss2021/genomic_dna/data/untrimmed_fastq
+$ cd ~/obss_2021/genomic_dna/data/untrimmed_fastq
 ~~~
 {: .bash}
 
@@ -284,7 +286,7 @@ control process! Before we move on, let's move our trimmed FASTQ files
 to a new subdirectory within our `data/` directory.
 
 ~~~
-$ cd ~/obss2021/genomic_dna/data/untrimmed_fastq
+$ cd ~/obss_2021/genomic_dna/data/untrimmed_fastq
 $ mkdir ../trimmed_fastq
 $ mv *.trim* ../trimmed_fastq
 $ cd ../trimmed_fastq
