@@ -48,10 +48,23 @@ The data are paired-end, so we will download two files for each sample. We will 
 
 To save time, the data has already been downloaded for you and placed in `~/obss_2021/genomic_dna/data/untrimmed_fastq`.
 
+Today we're going to be working inside of `~/obss_2021/genomic_dna`. The main directory structure for `genomic_dna/` (inside of `~/obss_2021/`) currently looks like this currently
+
+```
+genomic_dna/
+    |-adapters/
+    `-data/
+        `-untrimmed_fastq/    
+```
+
+
+Now  lets navigate to where the untrimmed fastq data is stored.
+
 ~~~
 cd ~/obss_2021/genomic_dna/data/untrimmed_fastq
 ~~~
 {: .bash}
+
 
 > ## Original way to obtain the data (Use if not on NeSI)
 > To download the data, run the commands below.
@@ -186,8 +199,24 @@ very poor (`#` = a quality score of 2).
 > {: .solution}
 {: .challenge}
 
-At this point, lets validate that all the relevant tools are installed. If you are using the AWS AMI then these _should_ be preinstalled. 
+At this point, lets validate that all the relevant tools are installed. (If you are using the original AWS AMI then these _should_ be preinstalled.)
 
+On NeSI, we load the tools by running a script that has the needed software and versions specified.
+
+~~~
+$ source ~/obss_2021/genomic_dna/modload.sh`
+~~~
+{: .bash}
+
+
+> ## Modules
+> On NeSI, software is managed through `modules` which enable many versions of the same program to co-exist. This particular `modload.sh` script contains the commands that loads the specific software modules needed for our analysis.
+> It uses the `module load` command which is then followed by the module you wish to use. In the case of `fastqc` we use `module load FastQC`. To find the modules for software managed on NeSI you can use `module spider <program name>`, e.g. `module spider fastqc` will return the names of the modules related to `fastqc`.
+>
+> For more information about using modules on NeSI see their [documentation](https://support.nesi.org.nz/hc/en-gb/articles/360000360576).
+{: .callout}
+
+Now we can make sure that the tools have loaded.
 ~~~
 $ fastqc -h
             FastQC - A high throughput sequence QC analysis tool
