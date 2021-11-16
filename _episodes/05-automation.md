@@ -109,6 +109,10 @@ Our first line will ensure that our script will exit if an error occurs, and is 
 
 ~~~
 set -e
+
+# load the needed modules
+source ~/obss_2021/genomic_dna/modload.sh
+
 cd ~/obss_2021/genomic_dna/data/untrimmed_fastq/
 ~~~
 {: .output}
@@ -178,6 +182,10 @@ Your full shell script should now look like this:
 
 ~~~
 set -e
+
+# load the needed modules
+source ~/obss_2021/genomic_dna/modload.sh
+
 cd ~/obss_2021/genomic_dna/data/untrimmed_fastq/
 
 echo "Running FastQC ..."
@@ -265,6 +273,10 @@ The script should look like this:
 
 ~~~
 set -e
+
+# load the needed modules
+source ~/obss_2021/genomic_dna/modload.sh
+
 cd ~/obss_2021/genomic_dna/results
 
 genome=~/obss_2021/genomic_dna/data/ref_genome/ecoli_rel606.fasta

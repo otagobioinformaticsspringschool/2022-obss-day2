@@ -1,4 +1,8 @@
 set -e
+
+# load the needed modules
+source ~/obss_2021/genomic_dna/modload.sh
+
 cd ~/obss2021/genomic_dna/results
 
 genome=~/obss2021/genomic_dna/data/ref_genome/ecoli_rel606.fasta
