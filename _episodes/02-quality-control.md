@@ -600,8 +600,7 @@ We've now looked at quite a few "Per base sequence quality" FastQC graphs, but t
 
 Now that we've looked at our HTML reports to get a feel for the data,
 let's look more closely at the other output files. Go back to the tab
-in your terminal program that is connected to your AWS instance
-(the tab label will start with `dcuser@ip`) and make sure you're in
+in Jupyter with your terminal and make sure you're in
 our results subdirectory.   
 
 ~~~
