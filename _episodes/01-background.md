@@ -77,4 +77,10 @@ This metadata describes information on the *Ara-3* clones and the columns repres
 > {: .solution}
 {: .challenge}
 
+## Illumina Sequencing
+
+This video is a useful background on the Illumina seqencing techology that was used to generate this data. In the next episode we'll be starting our journey on processing the reads generated from the sequencer.
+
+<iframe width="764" height="430" src="https://www.youtube.com/embed/fCd6B5HRaZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <!-- can add some additional info relevant to interplay of hypermutability and Cit+ adaptations, but keep it simple for now -->
