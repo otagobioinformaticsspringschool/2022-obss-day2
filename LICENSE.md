@@ -5,6 +5,8 @@ root: .
 ---
 ## Instructional Material
 
+**This lesson has been adapted from the original [Data Carpentry - Wrangling Genomics](https://datacarpentry.org/wrangling-genomics/) to be run using the NeSI infrastructure as part of the Otago Bioinformatics Spring School instead of AWS.**
+
 All Software Carpentry and Data Carpentry instructional material is
 made available under the [Creative Commons Attribution
 license][cc-by-human]. The following is a human-readable summary of
