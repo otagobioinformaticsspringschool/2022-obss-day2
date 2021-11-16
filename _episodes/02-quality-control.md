@@ -53,8 +53,10 @@ Today we're going to be working inside of `~/obss_2021/genomic_dna`. The main di
 ```
 genomic_dna/
     |-adapters/
-    `-data/
-        `-untrimmed_fastq/    
+    |-data/
+        `-untrimmed_fastq/
+    |-docs/
+    `-results/    
 ```
 
 
