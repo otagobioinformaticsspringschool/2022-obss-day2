@@ -38,7 +38,7 @@ The alignment process consists of two steps:
 First we download the reference genome for *E. coli* REL606. Although we could copy or move the file with `cp` or `mv`, most genomics workflows begin with a download step, so we will practice that here. 
 
 ~~~
-$ cd ~/obss_2021/genomic_dna
+$ cd ~/obss_2022/genomic_dna
 $ mkdir -p data/ref_genome
 $ curl -L -o data/ref_genome/ecoli_rel606.fasta.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/017/985/GCA_000017985.1_ASM1798v1/GCA_000017985.1_ASM1798v1_genomic.fna.gz
 $ gunzip data/ref_genome/ecoli_rel606.fasta.gz
@@ -68,7 +68,7 @@ and will enable us to run our variant calling workflow quite quickly.
 ~~~
 $ curl -L -o sub.tar.gz https://ndownloader.figshare.com/files/14418248
 $ tar xvf sub.tar.gz
-$ mv sub/ ~/obss_2021/genomic_dna/data/trimmed_fastq_small
+$ mv sub/ ~/obss_2022/genomic_dna/data/trimmed_fastq_small
 ~~~
 {: .bash}
 
@@ -466,7 +466,7 @@ this box, type the name of the "chromosome" followed by a colon and the position
 >> ## Solution
 >> 
 >> ~~~
->> $ samtools tview ~/obss_2021/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam ~/obss_2021/genomic_dna/data/ref_genome/ecoli_rel606.fasta
+>> $ samtools tview ~/obss_2022/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam ~/obss_2022/genomic_dna/data/ref_genome/ecoli_rel606.fasta
 >> ~~~
 >> {: .bash}
 >> 
@@ -497,10 +497,10 @@ $ cd ~/Desktop/files_for_igv
 >local computer (not your AWS instance).
 >
 >~~~
->$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2021/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam ~/Desktop/files_for_igv
->$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2021/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam.bai ~/Desktop/files_for_igv
->$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2021/genomic_dna/data/ref_genome/ecoli_rel606.fasta ~/Desktop/files_for_igv
->$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2021/genomic_dna/results/vcf/SRR2584866_final_variants.vcf ~/Desktop/files_for_igv
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2022/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam ~/Desktop/files_for_igv
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2022/genomic_dna/results/bam/SRR2584866.aligned.sorted.bam.bai ~/Desktop/files_for_igv
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2022/genomic_dna/data/ref_genome/ecoli_rel606.fasta ~/Desktop/files_for_igv
+>$ scp dcuser@ec2-34-203-203-131.compute-1.amazonaws.com:~/obss_2022/genomic_dna/results/vcf/SRR2584866_final_variants.vcf ~/Desktop/files_for_igv
 >~~~
 >{: .bash}
 >

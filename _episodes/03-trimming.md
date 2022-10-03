@@ -122,7 +122,7 @@ In this example, we've told Trimmomatic:
 Now we will run Trimmomatic on our data. To begin, navigate to your `untrimmed_fastq` data directory:
 
 ~~~
-$ cd ~/obss_2021/genomic_dna/data/untrimmed_fastq
+$ cd ~/obss_2022/genomic_dna/data/untrimmed_fastq
 ~~~
 {: .bash}
 
@@ -131,7 +131,7 @@ While using FastQC we saw that Nextera adapters were present in our samples.
 The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
 
 ~~~
-$ cp ~/obss_2021/genomic_dna/adapters/NexteraPE-PE.fa .
+$ cp ~/obss_2022/genomic_dna/adapters/NexteraPE-PE.fa .
 ~~~
 {: .bash}
 
@@ -287,7 +287,7 @@ control process! Before we move on, let's move our trimmed FASTQ files
 to a new subdirectory within our `data/` directory.
 
 ~~~
-$ cd ~/obss_2021/genomic_dna/data/untrimmed_fastq
+$ cd ~/obss_2022/genomic_dna/data/untrimmed_fastq
 $ mkdir ../trimmed_fastq
 $ mv *.trim* ../trimmed_fastq
 $ cd ../trimmed_fastq
